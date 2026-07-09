@@ -1,0 +1,35 @@
+name: Privacy or security question
+description: Ask about privacy or security without publishing sensitive exploit details.
+title: "privacy: "
+labels:
+  - privacy
+  - security
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include private chat content or exploit details. If this is a vulnerability, follow SECURITY.md.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question or concern
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What made you ask this? Keep examples synthetic or anonymized.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Local storage
+        - Permissions
+        - Data transfer
+        - DOM access
+        - Release artifacts
+        - Other
+    validations:
+      required: true

@@ -1,0 +1,9 @@
+# Keep repository text files stable across Windows, macOS, and Linux.
+* text=auto eol=lf
+
+# Extension assets that must remain binary if added later.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary

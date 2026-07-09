@@ -1,0 +1,56 @@
+name: Feature request
+description: Suggest a privacy-first NexusChats feature.
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. NexusChats is local-first and privacy-first.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the feature and expected behavior.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Sidebar
+        - Selection
+        - Pins
+        - Favorites
+        - Tags
+        - Colors
+        - Bulk actions
+        - Export or backup
+        - Themes
+        - Plugin system
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy considerations
+      description: What data would this process or store?
+      placeholder: This can be implemented with local UI state only.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional. Are there simpler or safer approaches?

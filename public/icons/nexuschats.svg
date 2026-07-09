@@ -1,0 +1,17 @@
+<!-- Source icon for NexusChats extension assets. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">NexusChats</title>
+  <desc id="desc">A geometric N monogram inside a rounded square.</desc>
+  <rect width="128" height="128" rx="24" fill="#111827" />
+  <path
+    d="M34 91V37h14l32 32V37h14v54H80L48 59v32H34Z"
+    fill="#F9FAFB"
+  />
+  <path
+    d="M47 37h34a20 20 0 0 1 0 40H66"
+    fill="none"
+    stroke="#14B8A6"
+    stroke-linecap="round"
+    stroke-width="10"
+  />
+</svg>

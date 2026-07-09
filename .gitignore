@@ -1,0 +1,16 @@
+# Dependency and build outputs for the Chrome extension project.
+node_modules/
+dist/
+coverage/
+
+# Local editor and OS metadata.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.agents/
+.codex/
+
+# Environment files are local-only and must not be committed.
+.env
+.env.*
