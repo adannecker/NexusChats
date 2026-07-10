@@ -29,6 +29,9 @@ describe("ChatGPT URL helpers", () => {
       "chat-123"
     );
     expect(
+      getConversationIdFromHref("/g/g-project/project/c/project-chat-123", "https://chatgpt.com/")
+    ).toBe("project-chat-123");
+    expect(
       getConversationIdFromHref("https://chat.openai.com/c/chat-123", "https://chatgpt.com/")
     ).toBe(null);
   });

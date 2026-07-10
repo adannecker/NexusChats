@@ -13,7 +13,9 @@ export default defineConfig({
     target: "chrome114",
     rollupOptions: {
       input: {
-        content: resolve(__dirname, "src/content/index.ts")
+        background: resolve(__dirname, "src/background/index.ts"),
+        content: resolve(__dirname, "src/content/index.ts"),
+        options: resolve(__dirname, "src/options/index.ts")
       },
       output: {
         assetFileNames: "assets/[name][extname]",

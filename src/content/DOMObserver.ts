@@ -4,7 +4,8 @@
  */
 import { FrameScheduler } from "../utils/scheduler";
 
-const NEXUSCHATS_SELECTOR = "#nexuschats-sidebar-panel, [data-nexuschats-chat-control]";
+const NEXUSCHATS_SELECTOR =
+  "#nexuschats-sidebar-panel, #nexuschats-project-actions, [data-nexuschats-chat-control]";
 
 /**
  * Thin MutationObserver wrapper for dynamic ChatGPT pages.

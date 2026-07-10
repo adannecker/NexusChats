@@ -9,6 +9,16 @@ import {
 } from "../src/features/selection/SelectionManager";
 import type { NexusChatsUIState } from "../src/storage/StorageService";
 
+function createUIState(overrides: Partial<NexusChatsUIState> = {}): NexusChatsUIState {
+  return {
+    projectSelectedChatIds: [],
+    projectSelectionModeEnabled: false,
+    selectedChatIds: [],
+    selectionModeEnabled: false,
+    ...overrides
+  };
+}
+
 class MemorySelectionStorage implements SelectionStorage {
   readonly savedStates: NexusChatsUIState[] = [];
 
@@ -26,10 +36,7 @@ class MemorySelectionStorage implements SelectionStorage {
 
 describe("SelectionManager", () => {
   it("selects, deselects, selects all, and clears chat IDs", async () => {
-    const storage = new MemorySelectionStorage({
-      selectedChatIds: [],
-      selectionModeEnabled: false
-    });
+    const storage = new MemorySelectionStorage(createUIState());
     const manager = new SelectionManager(storage);
 
     await manager.initialize();
@@ -46,10 +53,7 @@ describe("SelectionManager", () => {
   });
 
   it("persists only selection UI state", async () => {
-    const storage = new MemorySelectionStorage({
-      selectedChatIds: [],
-      selectionModeEnabled: false
-    });
+    const storage = new MemorySelectionStorage(createUIState());
     const manager = new SelectionManager(storage);
 
     await manager.initialize();
@@ -57,8 +61,31 @@ describe("SelectionManager", () => {
     manager.selectAll(["chat-2", "chat-1"]);
 
     expect(storage.savedStates.at(-1)).toEqual({
+      projectSelectedChatIds: [],
+      projectSelectionModeEnabled: false,
       selectedChatIds: ["chat-1", "chat-2"],
       selectionModeEnabled: true
     });
+  });
+
+  it("keeps sidebar and project selection state separate", async () => {
+    const storage = new MemorySelectionStorage(createUIState());
+    const manager = new SelectionManager(storage);
+
+    await manager.initialize();
+    manager.setMode(true, "sidebar");
+    manager.setMode(true, "project");
+    manager.selectAll(["sidebar-chat"], "sidebar");
+    manager.selectAll(["project-chat"], "project");
+
+    const snapshot = manager.getSnapshot();
+
+    expect(snapshot.scopes.sidebar.selectedChatIds).toEqual(new Set(["sidebar-chat"]));
+    expect(snapshot.scopes.project.selectedChatIds).toEqual(new Set(["project-chat"]));
+
+    manager.clearSelection("project");
+
+    expect(manager.getSnapshot().scopes.sidebar.selectedChatIds).toEqual(new Set(["sidebar-chat"]));
+    expect(manager.getSnapshot().scopes.project.selectedCount).toBe(0);
   });
 });

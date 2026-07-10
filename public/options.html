@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NexusChats Einstellungen</title>
+    <link rel="stylesheet" href="assets/options.css" />
+  </head>
+  <body>
+    <main class="options-shell">
+      <header class="options-header">
+        <div>
+          <p class="options-eyebrow">NexusChats</p>
+          <h1>Einstellungen</h1>
+        </div>
+        <a
+          class="options-link"
+          href="https://github.com/adannecker/NexusChats"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+      </header>
+
+      <section class="options-section" aria-labelledby="transparency-title">
+        <div class="section-heading">
+          <h2 id="transparency-title">Transparenz und Details</h2>
+          <p>Was die Erweiterung darf, lokal verarbeitet und speichert.</p>
+        </div>
+
+        <dl class="transparency-list">
+          <div>
+            <dt>Host-Zugriff</dt>
+            <dd>Die Erweiterung läuft nur auf <code>https://chatgpt.com/*</code>.</dd>
+          </div>
+          <div>
+            <dt>Storage-Zugriff</dt>
+            <dd>
+              <code>chrome.storage.local</code> speichert lokale UI-Zustände, Tags und Farben.
+            </dd>
+          </div>
+          <div>
+            <dt>Verarbeitete Daten</dt>
+            <dd>Sichtbare Chat-Links und daraus abgeleitete Chat-IDs für lokale Organisation.</dd>
+          </div>
+          <div>
+            <dt>Nicht gespeichert</dt>
+            <dd>
+              Keine Prompts, Antworten, Chat-Titel, Nachrichteninhalte, Account-Daten oder
+              Analytics.
+            </dd>
+          </div>
+          <div>
+            <dt>Netzwerk</dt>
+            <dd>Kein Backend, keine Telemetrie, keine externen API-Aufrufe durch NexusChats.</dd>
+          </div>
+          <div>
+            <dt>Quellcode</dt>
+            <dd>
+              <a href="https://github.com/adannecker/NexusChats" target="_blank" rel="noreferrer">
+                GitHub-Repository ansehen
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>Lizenz</dt>
+            <dd>
+              Open Source unter MIT-Lizenz.
+              <a
+                href="https://github.com/adannecker/NexusChats/blob/main/LICENSE"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Lizenztext ansehen
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="options-section" aria-labelledby="tags-title">
+        <div class="section-heading">
+          <h2 id="tags-title">Tags und Farben</h2>
+          <p>
+            Jeder Tag hat genau eine Farbe. So bleiben Filter, Markierungen und Legende später
+            eindeutig.
+          </p>
+        </div>
+
+        <form class="tag-form" id="tag-form">
+          <label>
+            <span>Tag-Name</span>
+            <input
+              id="tag-name"
+              name="tag-name"
+              maxlength="40"
+              autocomplete="off"
+              placeholder="z. B. Recherche"
+            />
+          </label>
+          <label>
+            <span>Farbe</span>
+            <input id="tag-color" name="tag-color" type="color" value="#14b8a6" />
+          </label>
+          <button class="primary-button" type="submit">Tag hinzufügen</button>
+        </form>
+
+        <div class="tag-list-header">
+          <span>Vorhandene Tags</span>
+          <button class="secondary-button" id="clear-tags-button" type="button">
+            Alle entfernen
+          </button>
+        </div>
+        <div class="tag-list" id="tag-list" aria-live="polite"></div>
+        <p class="empty-state" id="empty-state">Noch keine Tags angelegt.</p>
+      </section>
+
+      <p class="status-line" id="status-line" role="status"></p>
+    </main>
+
+    <script type="module" src="assets/options.js"></script>
+  </body>
+</html>

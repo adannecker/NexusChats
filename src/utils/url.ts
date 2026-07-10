@@ -3,7 +3,7 @@
  * operate on.
  */
 const CHATGPT_HOST = "chatgpt.com";
-const CONVERSATION_PATH_PATTERN = /^\/c\/[^/?#]+/u;
+const CONVERSATION_PATH_PATTERN = /(?:^|\/)c\/([^/?#]+)/u;
 
 export function isChatGptHost(hostname: string): boolean {
   return hostname.toLowerCase() === CHATGPT_HOST;
@@ -31,7 +31,7 @@ export function getConversationIdFromHref(href: string, baseUrl: string): string
       return null;
     }
 
-    const encodedChatId = url.pathname.split("/")[2];
+    const encodedChatId = url.pathname.match(CONVERSATION_PATH_PATTERN)?.[1];
 
     return encodedChatId ? decodeURIComponent(encodedChatId) : null;
   } catch {

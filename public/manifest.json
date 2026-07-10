@@ -7,6 +7,13 @@
   "action": {
     "default_title": "NexusChats"
   },
+  "background": {
+    "service_worker": "assets/background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
   "permissions": ["storage"],
   "content_scripts": [
     {

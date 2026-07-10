@@ -28,12 +28,16 @@ Version `0.2.0` includes the first complete selection workflow:
 - runs only on `https://chatgpt.com/*`
 - detects the ChatGPT sidebar with robust DOM heuristics
 - adds a `NexusChats` area above the chat list
-- provides an `Auswahlmodus` button
-- shows a checkbox next to every detected chat while selection mode is active
+- provides an `Auswahlmodus` switch
+- adds a horizontal action area in ChatGPT project views
+- links to a transparent extension options page from the NexusChats panel
+- provides local configuration for tags with one color per tag
+- keeps sidebar selection and project selection separate
+- shows a checkbox next to every detected chat in the active selection area
 - supports multi-select
 - highlights selected chats visually
 - shows the number of selected chats
-- provides `Alle auswaehlen` and `Auswahl aufheben`
+- provides `Alle auswählen` and `Auswahl aufheben`
 - uses a `MutationObserver` for dynamic ChatGPT UI changes
 - does not delete, archive, rename, export, or modify chats
 
@@ -58,12 +62,15 @@ A draft Chrome Web Store listing is maintained in [docs/store-listing.md](docs/s
 
 NexusChats stores only local UI state:
 
-- whether selection mode is active
-- which chat IDs are currently selected
+- whether selection mode is active per area
+- which chat IDs are currently selected per area
+- user-defined tag names and their colors
 
 NexusChats does not store chat titles, prompts, answers, message contents, full URLs, analytics events, or account information. Nothing is sent to external servers.
 
 More detail is available in [docs/privacy.md](docs/privacy.md).
+
+Developer setup for another machine is documented in [docs/development.md](docs/development.md).
 
 ## Installation
 
@@ -126,6 +133,7 @@ npm run verify
 .github/              Issue templates, workflows, release automation
 docs/                 Architecture, privacy, and store listing docs
 public/               Manifest and static extension assets
+src/background/       Extension-only runtime message handling
 src/content/          Entry point, DOMObserver, and UIRenderer
 src/features/         Feature modules
 src/storage/          Local storage abstractions
@@ -140,6 +148,8 @@ Key architecture pieces:
 - `ChatDetector` detects chat links and extracts only chat IDs.
 - `SelectionManager` manages selection state.
 - `UIRenderer` renders panel controls, checkboxes, counters, and highlighting.
+- `src/background` opens extension-only pages from runtime messages.
+- `src/options` renders the extension options page.
 - `DOMObserver` coalesces DOM changes into scheduled renders.
 - `StorageService` persists local UI state with `chrome.storage.local`.
 
@@ -184,7 +194,7 @@ No. NexusChats has no backend and does not send chat data to external servers.
 
 ### What data is stored?
 
-Only local UI state is stored: whether selection mode is active and which chat IDs are selected.
+Only local UI state and local configuration are stored: whether selection mode is active, which chat IDs are selected, separated for the sidebar and project views, and user-defined tag names with their colors.
 
 ### Does NexusChats modify or delete chats?
 

@@ -1,6 +1,6 @@
 # Store Listing Draft
 
-Dieses Dokument bereitet ein spaeteres Chrome Web Store Listing vor. Es ist ein Arbeitsdokument und sollte vor einer Veroeffentlichung mit dem aktuellen Funktionsumfang abgeglichen werden.
+Dieses Dokument bereitet ein späteres Chrome Web Store Listing vor. Es ist ein Arbeitsdokument und sollte vor einer Veröffentlichung mit dem aktuellen Funktionsumfang abgeglichen werden.
 
 ## Name
 
@@ -18,14 +18,17 @@ NexusChats adds local, private, open-source organization tools to the ChatGPT si
 
 NexusChats is a free, local-first, privacy-first, open-source Chrome extension for organizing ChatGPT conversations.
 
-The extension adds a small NexusChats area to the ChatGPT sidebar. The current version provides a selection mode with checkboxes, multi-select, visual highlighting, a selected-count indicator, and controls to select all visible chats or clear the current selection.
+The extension adds a small NexusChats area to the ChatGPT sidebar and a horizontal action area in ChatGPT project views. The current version provides separate selection modes for sidebar chats and project chats, with checkboxes, multi-select, visual highlighting, selected-count indicators, and controls to select all visible chats or clear the current selection.
 
 NexusChats does not include ads, tracking, analytics, cloud sync, or hidden premium features. It does not send chat content or settings to external servers.
 
 Current features:
 
 - local sidebar tools for ChatGPT
-- selection mode
+- horizontal project action area
+- separate selection modes for sidebar and project chats
+- transparent options page with permission and license details
+- local tag configuration with one color per tag
 - checkboxes next to detected chats
 - multi-select
 - selected chat counter
@@ -44,11 +47,11 @@ Planned features:
 - themes
 - plugin system
 
-## Datenschutz-Hinweis fuer Store
+## Datenschutz-Hinweis für Store
 
-NexusChats processes visible ChatGPT sidebar links locally in the browser to provide organization UI. It stores only local UI state, such as whether selection mode is active and which chat IDs are selected. It does not collect, sell, transmit, or share user data.
+NexusChats processes visible ChatGPT sidebar and project chat links locally in the browser to provide organization UI. It stores only local UI state and local configuration, such as whether selection mode is active, which chat IDs are selected for each area, and user-defined tag names with colors. It does not collect, sell, transmit, or share user data.
 
-## Berechtigungsbegruendung
+## Berechtigungsbegründung
 
 `storage`
 
@@ -81,12 +84,13 @@ English primary, German project documentation available.
 Vor Store-Einreichung erstellen:
 
 - ChatGPT sidebar with NexusChats panel
+- ChatGPT project view with horizontal NexusChats actions
 - selection mode inactive
 - selection mode active with checkboxes
 - several selected chats with highlighted state
 - selected-count and action buttons
 
-Screenshots duerfen keine echten privaten Chat-Inhalte enthalten.
+Screenshots dürfen keine echten privaten Chat-Inhalte enthalten.
 
 ## Support
 

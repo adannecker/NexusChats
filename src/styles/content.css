@@ -20,9 +20,28 @@
     sans-serif;
 }
 
+#nexuschats-project-actions.nexuschats-project-actions {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  max-width: min(420px, 46vw);
+  margin-left: 8px;
+  color: #111827;
+  font:
+    12px/1.35 system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  vertical-align: middle;
+}
+
 #nexuschats-sidebar-panel.nexuschats-panel *,
 #nexuschats-sidebar-panel.nexuschats-panel *::before,
-#nexuschats-sidebar-panel.nexuschats-panel *::after {
+#nexuschats-sidebar-panel.nexuschats-panel *::after,
+#nexuschats-project-actions.nexuschats-project-actions *,
+#nexuschats-project-actions.nexuschats-project-actions *::before,
+#nexuschats-project-actions.nexuschats-project-actions *::after {
   box-sizing: border-box;
 }
 
@@ -47,76 +66,208 @@
   white-space: nowrap;
 }
 
+.nexuschats-panel__selection-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  min-width: 0;
+}
+
+.nexuschats-panel__mode-label {
+  overflow: hidden;
+  flex: 0 1 auto;
+  min-width: 0;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .nexuschats-panel__meta {
   overflow: hidden;
-  margin-top: 6px;
+  flex: 0 1 auto;
+  min-width: 52px;
   color: rgba(17, 24, 39, 0.68);
-  font-size: 12px;
+  font-size: 11px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .nexuschats-panel__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
+  flex: 0 0 auto;
+  gap: 4px;
+  margin-left: auto;
 }
 
-.nexuschats-panel__button {
+#nexuschats-project-actions .nexuschats-panel__selection-controls {
+  flex: 0 1 auto;
+  flex-wrap: nowrap;
+  margin-top: 0;
+}
+
+#nexuschats-project-actions .nexuschats-panel__mode-label {
+  max-width: 112px;
+}
+
+#nexuschats-project-actions .nexuschats-panel__meta {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 88px;
+}
+
+#nexuschats-project-actions .nexuschats-panel__actions {
+  margin-left: 0;
+}
+
+.nexuschats-panel__switch,
+.nexuschats-panel__icon-button,
+.nexuschats-panel__settings-button {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   min-width: 0;
-  min-height: 30px;
-  padding: 0 10px;
   border: 1px solid rgba(17, 24, 39, 0.18);
-  border-radius: 7px;
   background: #ffffff;
   color: #111827;
   font: inherit;
-  font-weight: 650;
   letter-spacing: 0;
   cursor: pointer;
 }
 
-.nexuschats-panel__actions .nexuschats-panel__button {
-  flex: 1 1 108px;
-  min-height: 28px;
-  padding: 0 8px;
-  font-size: 11px;
+.nexuschats-panel__switch {
+  width: 34px;
+  height: 20px;
+  padding: 2px;
+  border-radius: 999px;
+  justify-content: flex-start;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease;
 }
 
-.nexuschats-panel__button:hover {
+.nexuschats-panel__switch-knob {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.58);
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.2);
+  transition:
+    background-color 140ms ease,
+    transform 140ms ease;
+}
+
+.nexuschats-panel__switch:hover,
+.nexuschats-panel__icon-button:hover,
+.nexuschats-panel__settings-button:hover {
   border-color: rgba(20, 184, 166, 0.52);
   background: rgba(20, 184, 166, 0.08);
 }
 
-.nexuschats-panel__button:disabled {
+.nexuschats-panel__switch:focus-visible,
+.nexuschats-panel__icon-button:focus-visible,
+.nexuschats-panel__settings-button:focus-visible {
+  outline: 2px solid rgba(20, 184, 166, 0.6);
+  outline-offset: 2px;
+}
+
+.nexuschats-panel__switch[data-state="active"] {
+  border-color: #0f766e;
+  background: #14b8a6;
+}
+
+.nexuschats-panel__switch[data-state="active"] .nexuschats-panel__switch-knob {
+  background: #ffffff;
+  transform: translateX(14px);
+}
+
+.nexuschats-panel__icon-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  padding: 0;
+}
+
+.nexuschats-panel__settings-button {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  padding: 0;
+}
+
+.nexuschats-panel__icon-button:disabled {
   border-color: rgba(17, 24, 39, 0.12);
   background: rgba(17, 24, 39, 0.04);
   color: rgba(17, 24, 39, 0.42);
   cursor: not-allowed;
 }
 
-.nexuschats-panel__button:focus-visible {
-  outline: 2px solid rgba(20, 184, 166, 0.6);
-  outline-offset: 2px;
+.nexuschats-panel__icon {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 
-.nexuschats-panel__button[aria-pressed="true"],
-.nexuschats-panel__button[data-state="active"] {
-  border-color: #0f766e;
-  background: #14b8a6;
-  color: #ffffff;
+.nexuschats-panel__icon--select-all::before,
+.nexuschats-panel__icon--clear-selection::before {
+  position: absolute;
+  inset: 2px;
+  border: 1.5px solid currentColor;
+  border-radius: 4px;
+  content: "";
 }
 
-a.nexuschats-chat--selection-active {
+.nexuschats-panel__icon--select-all::after {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 4px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  content: "";
+  transform: rotate(40deg);
+}
+
+.nexuschats-panel__icon--clear-selection::after {
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  left: 5px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.nexuschats-panel__icon--settings::before {
+  position: absolute;
+  inset: 3px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  content: "";
+}
+
+.nexuschats-panel__icon--settings::after {
+  position: absolute;
+  inset: 7px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow:
+    0 -7px 0 -2px currentColor,
+    0 7px 0 -2px currentColor,
+    7px 0 0 -2px currentColor,
+    -7px 0 0 -2px currentColor;
+  content: "";
+}
+
+.nexuschats-chat--selection-active {
   position: relative !important;
 }
 
-a.nexuschats-chat--selection-active .nexuschats-chat-checkbox {
+.nexuschats-chat--selection-active .nexuschats-chat-checkbox {
   display: inline-flex;
   flex: 0 0 16px;
   align-items: center;
@@ -131,7 +282,19 @@ a.nexuschats-chat--selection-active .nexuschats-chat-checkbox {
   vertical-align: -3px;
 }
 
-a.nexuschats-chat--selection-active .nexuschats-chat-checkbox::after {
+.nexuschats-chat--selection-active[data-nexuschats-selection-scope="project"]
+  .nexuschats-chat-checkbox {
+  position: absolute;
+  top: 50%;
+  left: -28px;
+  z-index: 1;
+  margin: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateY(-50%);
+}
+
+.nexuschats-chat--selection-active .nexuschats-chat-checkbox::after {
   width: 5px;
   height: 9px;
   border-right: 2px solid transparent;
@@ -140,20 +303,20 @@ a.nexuschats-chat--selection-active .nexuschats-chat-checkbox::after {
   transform: translateY(-1px) rotate(40deg);
 }
 
-a.nexuschats-chat--selected {
+.nexuschats-chat--selected {
   background: rgba(20, 184, 166, 0.14) !important;
 }
 
-a.nexuschats-chat--selected .nexuschats-chat-checkbox {
+.nexuschats-chat--selected .nexuschats-chat-checkbox {
   border-color: #0f766e;
   background: #14b8a6;
 }
 
-a.nexuschats-chat--selected .nexuschats-chat-checkbox::after {
+.nexuschats-chat--selected .nexuschats-chat-checkbox::after {
   border-color: #ffffff;
 }
 
-a.nexuschats-chat--selection-active:hover {
+.nexuschats-chat--selection-active:hover {
   background: rgba(20, 184, 166, 0.1) !important;
 }
 
@@ -164,32 +327,44 @@ a.nexuschats-chat--selection-active:hover {
     color: #f9fafb;
   }
 
+  #nexuschats-project-actions.nexuschats-project-actions {
+    color: #f9fafb;
+  }
+
   .nexuschats-panel__meta {
     color: rgba(249, 250, 251, 0.68);
   }
 
-  .nexuschats-panel__button {
+  .nexuschats-panel__switch,
+  .nexuschats-panel__icon-button,
+  .nexuschats-panel__settings-button {
     border-color: rgba(249, 250, 251, 0.16);
     background: rgba(249, 250, 251, 0.06);
     color: #f9fafb;
   }
 
-  .nexuschats-panel__button:hover {
+  .nexuschats-panel__switch-knob {
+    background: rgba(249, 250, 251, 0.72);
+  }
+
+  .nexuschats-panel__switch:hover,
+  .nexuschats-panel__icon-button:hover,
+  .nexuschats-panel__settings-button:hover {
     background: rgba(20, 184, 166, 0.16);
   }
 
-  .nexuschats-panel__button:disabled {
+  .nexuschats-panel__icon-button:disabled {
     border-color: rgba(249, 250, 251, 0.1);
     background: rgba(249, 250, 251, 0.04);
     color: rgba(249, 250, 251, 0.4);
   }
 
-  a.nexuschats-chat--selection-active .nexuschats-chat-checkbox {
+  .nexuschats-chat--selection-active .nexuschats-chat-checkbox {
     border-color: rgba(249, 250, 251, 0.48);
     background: rgba(17, 24, 39, 0.94);
   }
 
-  a.nexuschats-chat--selected {
+  .nexuschats-chat--selected {
     background: rgba(20, 184, 166, 0.18) !important;
   }
 }
@@ -200,11 +375,34 @@ a.nexuschats-chat--selection-active:hover {
     margin-left: 6px;
   }
 
-  .nexuschats-panel__header {
+  .nexuschats-panel__selection-controls {
     flex-wrap: wrap;
   }
 
-  .nexuschats-panel__button {
-    min-height: 32px;
+  .nexuschats-panel__actions {
+    margin-left: 0;
+  }
+
+  .nexuschats-panel__icon-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  #nexuschats-project-actions.nexuschats-project-actions {
+    max-width: 100%;
+    margin-left: 6px;
+  }
+
+  #nexuschats-project-actions .nexuschats-panel__selection-controls {
+    flex-wrap: nowrap;
+  }
+
+  #nexuschats-project-actions .nexuschats-panel__mode-label {
+    display: none;
+  }
+
+  #nexuschats-project-actions .nexuschats-panel__icon-button {
+    width: 28px;
+    height: 28px;
   }
 }
