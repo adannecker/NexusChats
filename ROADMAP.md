@@ -34,6 +34,10 @@ Todo:
 
 - [x] Einstellungsseite für transparente Berechtigungs- und Lizenzhinweise
 - [x] Konfigurationsseite für Tags mit jeweils eigener Farbe
+- [ ] einklappbare rechte Organisations-Sidebar für breite Ansichten
+- [ ] rechte Sidebar auf kleinen Ansichten als Drawer/Overlay bereitstellen
+- [ ] Sidebar-Bereiche für Pins, Favoriten, Ordner und gespeicherte Suchfilter
+- [ ] kontextbezogene Chat-Details in der rechten Sidebar
 - [ ] Pins
 - [ ] Favoriten
 - [ ] Tags
