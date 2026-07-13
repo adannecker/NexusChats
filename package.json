@@ -1,6 +1,6 @@
 {
   "name": "nexuschats",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A local, open-source Chrome extension that adds productivity controls to the ChatGPT sidebar.",
   "type": "module",
   "license": "MIT",

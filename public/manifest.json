@@ -3,7 +3,7 @@
   "name": "NexusChats",
   "short_name": "NexusChats",
   "description": "Local productivity controls for the ChatGPT sidebar.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "action": {
     "default_title": "NexusChats"
   },
@@ -14,12 +14,20 @@
     "page": "options.html",
     "open_in_tab": true
   },
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/*"],
-      "js": ["assets/content.js"],
-      "css": ["assets/content.css"],
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "assets/content.js"
+      ],
+      "css": [
+        "assets/content.css"
+      ],
       "run_at": "document_idle"
     }
   ]
